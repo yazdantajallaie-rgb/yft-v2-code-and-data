@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,physics}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{setspace}
+\setstretch{1.15}
+
+\title{\textbf{Tajalaei--Yazdan Field Theory (YFT)}\\
+\large Mathematical and Numerical Constants for Reproducible Analysis}
+
+\author{
+Yazdan Tajalaei\\
+Independent Researcher
+}
+
+\date{Supplement--M0 (Constants and Closure)}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose of This Document}
+
+This document collects \emph{all numerical values, fixed points, and
+closure parameters} required to reproduce the mathematical and
+numerical analysis of the Tajalaei--Yazdan Field Theory (YFT).
+No additional assumptions or hidden inputs are required.
+
+\section{Fundamental Definitions}
+
+The renormalization group (RG) scale is defined as
+\begin{equation}
+t = \ln k,
+\qquad
+k = \frac{1}{r}.
+\end{equation}
+
+All quantities below are expressed in dimensionless RG units unless
+explicitly stated otherwise.
+
+\section{Dynamical Variables}
+
+The minimal truncation of YFT is defined on the set
+\begin{equation}
+X(k)=
+\{ g,\;\lambda,\;\eta_N,\;\tilde\lambda_2,\;\tilde\lambda_4,\;\eta_\chi,\;\mu \}.
+\end{equation}
+
+\begin{itemize}
+\item $g$ : dimensionless Newton coupling
+\item $\lambda$ : dimensionless cosmological constant
+\item $\eta_N$ : graviton anomalous dimension
+\item $\tilde\lambda_2$ : scalar mass parameter
+\item $\tilde\lambda_4$ : scalar quartic self--interaction
+\item $\eta_\chi$ : scalar anomalous dimension
+\item $\mu$ : scalar--geometric mixing parameter
+\end{itemize}
+
+\section{Equilibrium Closure}
+
+The equilibrium parameter $\alpha(k)$ is defined by the closure relation
+\begin{equation}
+\boxed{
+\alpha(k)
+=
+\mathrm{clip}\!\left(
+-\frac{D_1(X,k)}{D_0(X,k)},
+\alpha_{\min},
+\alpha_{\max}
+\right),
+}
+\end{equation}
+with fixed bounds
+\begin{equation}
+\alpha_{\min}=1,
+\qquad
+\alpha_{\max}=10^{6}.
+\end{equation}
+
+No external tuning of $\alpha$ is permitted.
+
+\section{Ultraviolet Fixed Point}
+
+The ultraviolet fixed point $X^\*$ is defined by
+\begin{equation}
+\beta_i(X^\*) = 0.
+\end{equation}
+
+The numerically determined fixed--point values used throughout this work are:
+
+\begin{table}[h!]
+\centering
+\caption{Ultraviolet fixed point of YFT (benchmark realization).}
+\begin{tabular}{lc}
+\toprule
+Parameter & Fixed--point value \\
+\midrule
+$g^\*$ & $0.7073$ \\
+$\lambda^\*$ & $0.1932$ \\
+$\eta_N^\*$ & $-2.0000$ \\
+$\tilde\lambda_2^\*$ & $0.0970$ \\
+$\tilde\lambda_4^\*$ & $0.0100$ \\
+$\eta_\chi^\*$ & $0.0650$ \\
+$\mu^\*$ & $0.0000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This fixed point exhibits exactly two relevant directions.
+
+\section{Derived Physical Scales}
+
+The effective scalar mass is defined as
+\begin{equation}
+m_{\mathrm{eff}}(k) = \sqrt{\tilde\lambda_2(k)}\,k.
+\end{equation}
+
+The corresponding fifth--force range is
+\begin{equation}
+\ell_5(k) = \frac{1}{m_{\mathrm{eff}}(k)}.
+\end{equation}
+
+\section{Effective Gravitational Coupling}
+
+The physical quantity constrained by cosmological data is
+\begin{equation}
+\boxed{
+\mu(k) \equiv \frac{G_{\mathrm{eff}}(k)}{G}
+= 1 + \frac{\epsilon(k)}{1 + \left(m_{\mathrm{eff}}(k)/k\right)^2}.
+}
+\end{equation}
+
+At the present Hubble scale,
+\begin{equation}
+\epsilon(H_0) \ll 10^{-6},
+\qquad
+\mu(H_0) \simeq 1.
+\end{equation}
+
+\section{Maximum Scalar Coupling}
+
+The unscreened scalar coupling is bounded by
+\begin{equation}
+\epsilon_{\max} = \frac{1}{3}.
+\end{equation}
+
+Environmental screening suppresses $\epsilon(k)$ in the infrared.
+
+\section{Quantum Boundary Channel (Laboratory Scale)}
+
+The boundary--induced coherence field $\Xi(z)$ satisfies
+\begin{equation}
+\boxed{
+-\frac{d}{dz}\!\left(D(z)\frac{d\Xi}{dz}\right)
++ m^2(z)\,[\Xi(z)-1]=0,
+}
+\end{equation}
+with piecewise--constant parameters
+\begin{equation}
+m(z)=
+\begin{cases}
+m_{\mathrm{gap}} = 0.07069~\mu\mathrm{m}^{-1}, & 0 \le z \le d,\\
+m_{\mathrm{in}} = 5.0~\mu\mathrm{m}^{-1}, & \text{plates},
+\end{cases}
+\end{equation}
+\begin{equation}
+D(z)=1.
+\end{equation}
+
+The experimentally relevant observable is
+\begin{equation}
+\overline{(1-\Xi)}(d)
+=
+\frac{1}{d}\int_0^d [1-\Xi(z)]\,dz.
+\end{equation}
+
+\section{Numerical Resolution Parameters}
+
+All numerical solutions employ:
+\begin{itemize}
+\item Grid points: $N = 4001$--$6001$
+\item Plate thickness: $t = 1~\mu$m
+\item Boundary conditions: deep Dirichlet
+\end{itemize}
+
+\section*{Completeness Statement}
+
+The constants and definitions listed in this document are sufficient to:
+\begin{itemize}
+\item solve the RG fixed--point equations,
+\item reconstruct all physical scales,
+\item reproduce laboratory and cosmological predictions,
+\item execute all numerical pipelines described in the associated codebase.
+\end{itemize}
+
+No additional free parameters are introduced beyond those explicitly listed.
+
+\end{document}
