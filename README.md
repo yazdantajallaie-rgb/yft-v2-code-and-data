@@ -9,5 +9,9 @@ This repository contains:
 - CSV datasets used in the accompanying supplements
 
 This is a companion repository to the Zenodo anchor article and its supplementary materials.
+## Supplementary Material
+
+Numerical constants and parameters required for full reproducibility are provided in  
+**Supplement-N-Series-Numerical.pdf** (this repository).
 
 **Zenodo DOI:** https://doi.org/10.5281/zenodo.18134323
